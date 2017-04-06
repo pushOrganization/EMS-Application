@@ -10,8 +10,8 @@ node {
            sh 'mvn clean install'
         }
         
-        stage('Archive Artefact') {
-            // Archive Artefact after build
-            archive 'excludes: '', includes: 'target/*.war''    
+        stage('Archive Artifact') {
+            // Archive Artifact after build
+           archiveArtifacts 'target/*.war'  
         }
 }
