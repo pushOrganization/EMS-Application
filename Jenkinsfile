@@ -12,7 +12,7 @@ node {
         stage('Test') {
         // Testing Code
           // runTests()
-            mvn "install -Dmaven.test.failure.ignore=true"
+            sh "mvn install -Dmaven.test.failure.ignore=true"
 
   /* Archive the test results */
             step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
