@@ -7,7 +7,11 @@ node {
         
         stage('build') {
         // Building Code
-           sh "mvn clean install"
+           sh "mvn clean install -DskipTests"
+        }
+        stage('Test') {
+        // Testing Code
+           runTests()
         }
         
         stage('Archive Artifact') {
@@ -15,3 +19,13 @@ node {
           archiveArtifacts artifacts: 'target/EmployeeApplicationSprint4-1.0-SNAPSHOT.war'
         }
 }
+
+void runTests(def args) {
+  /* Call the Maven build with tests. */
+  mvn "install -Dmaven.test.failure.ignore=true"
+
+  /* Archive the test results */
+  step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+}
+
+
