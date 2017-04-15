@@ -12,6 +12,6 @@ node {
         
         stage('Archive Artifact') {
             // Archive Artifact after build
-          archiveArtifacts artifacts: 'target/EmployeeApplication.war'
+          archiveArtifacts artifacts: 'target/EmployeeApplicationSprint4-1.0-SNAPSHOT.war'
         }
 }
