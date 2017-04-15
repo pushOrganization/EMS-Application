@@ -7,11 +7,11 @@ node {
         
         stage('build') {
         // Building Code
-           sh 'mvn clean install'
+           sh "mvn clean install"
         }
         
         stage('Archive Artifact') {
             // Archive Artifact after build
-           archiveArtifacts 'target/*.war'  
+          archiveArtifacts artifacts: 'target/EmployeeApplication.war', onlyIfSuccessful: true  
         }
 }
