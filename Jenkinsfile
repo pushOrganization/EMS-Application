@@ -2,7 +2,7 @@ node {
   
         stage('Checkout') {
         // Cloning Repo
-           url: 'https://github.com/pushOrganization/EMS-Application.git'
+          git url: 'https://github.com/pushOrganization/EMS-Application.git'
         }    
         
         stage('build') {
