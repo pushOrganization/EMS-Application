@@ -22,6 +22,9 @@ node {
             // Archive Artifact after build
           archiveArtifacts artifacts: 'target/EmployeeApplicationSprint4-1.0-SNAPSHOT.war'
         }
+ timeout(time:5, unit:'DAYS') {
+    input message:'Approve deployment?', submitter: 'it-ops'
+}
 }
 
 void runTests(def args) {
