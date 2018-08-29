@@ -25,6 +25,7 @@ node {
  timeout(time:5, unit:'DAYS') {
     input message:'Approve deployment?', submitter: 'admin'
 }
+slackSend channel: #jenkinsbuild, color: '#2ECC71', message: "Build succeeded!"  
 }
 
 void runTests(def args) {
