@@ -23,7 +23,7 @@ node {
           archiveArtifacts artifacts: 'target/EmployeeApplicationSprint4-1.0-SNAPSHOT.war'
         }
  timeout(time:5, unit:'DAYS') {
-    input message:'Approve deployment?', submitter: 'it-ops'
+    input message:'Approve deployment?', submitter: 'admin'
 }
 }
 
