@@ -25,8 +25,26 @@ node {
  timeout(time:5, unit:'DAYS') {
     input message:'Approve deployment?', submitter: 'admin'
 }
-slackSend baseUrl: 'https://jenkinsbuild.slack.com/services/hooks/jenkins-ci/', botUser: true, channel: '#jenkinsbuild', color: '#439FE0', failOnError: true, message: 'slack build failure', tokenCredentialId: 'jenkinsSlack'
+  call(currentBuild.currentResult)
+  
+//slackSend baseUrl: 'https://jenkinsbuild.slack.com/services/hooks/jenkins-ci/', botUser: true, channel: '#jenkinsbuild', color: '#439FE0', failOnError: true, message: 'slack build failure', tokenCredentialId: 'jenkinsSlack'
 }
+
+def call(String buildResult) {
+  if ( buildResult == "SUCCESS" ) {
+    slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was successful"
+  }
+  else if( buildResult == "FAILURE" ) { 
+    slackSend color: "danger", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was failed"
+  }
+  else if( buildResult == "UNSTABLE" ) { 
+    slackSend color: "warning", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was unstable"
+  }
+  else {
+    slackSend color: "danger", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} its resulat was unclear"	
+  }
+}
+
 
 void runTests(def args) {
   /* Call the Maven build with tests. */
