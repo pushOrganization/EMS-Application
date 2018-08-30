@@ -18,6 +18,9 @@ node {
   /* Archive the test results */
             step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
         }
+        stage('SCA'){
+            sh "mvn sonar:sonar -Dsonar.organization=pushpendrad-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${env.SCA_TOKEN}"
+        }
         
         stage('Archive Artifact') {
             // Archive Artifact after build
