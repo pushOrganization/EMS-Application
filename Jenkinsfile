@@ -25,8 +25,8 @@ node {
  timeout(time:5, unit:'DAYS') {
     input message:'Approve deployment?', submitter: 'admin'
 }
-  call(currentBuild.currentResult)
-  
+  //call(currentBuild.currentResult)
+  slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was successful"
 //slackSend baseUrl: 'https://jenkinsbuild.slack.com/services/hooks/jenkins-ci/', botUser: true, channel: '#jenkinsbuild', color: '#439FE0', failOnError: true, message: 'slack build failure', tokenCredentialId: 'jenkinsSlack'
 }
 
