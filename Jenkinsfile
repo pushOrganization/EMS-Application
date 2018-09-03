@@ -22,6 +22,12 @@ node {
             sh "mvn sonar:sonar -Dsonar.organization=pushpendrad-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${env.SCA_TOKEN}"
         }
         
+        
+        stage('performance'){
+                sh "mvn gatling:execute"
+        }
+        
+        
         stage('Archive Artifact') {
             // Archive Artifact after build
           archiveArtifacts artifacts: 'target/EmployeeApplicationSprint4-1.0-SNAPSHOT.war'
