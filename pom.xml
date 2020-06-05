@@ -232,6 +232,12 @@
 			<version>2.0.0-M3a</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+		    <groupId>io.gatling</groupId>
+		    <artifactId>gatling-maven-plugin</artifactId>
+		    <version>2.2.4</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
@@ -239,6 +245,12 @@
 			<artifactId>gson</artifactId>
 			<version>2.6.2</version>
 		</dependency>
+<!-- https://mvnrepository.com/artifact/io.gatling.highcharts/gatling-charts-highcharts -->
+<dependency>
+    <groupId>io.gatling.highcharts</groupId>
+    <artifactId>gatling-charts-highcharts</artifactId>
+    <version>2.3.1</version>
+</dependency>
 
 
 	</dependencies>
@@ -409,6 +421,10 @@
 					</formats>
 				</configuration>
 			</plugin>
+			
+							<!-- https://mvnrepository.com/artifact/io.gatling/gatling-maven-plugin -->
+				
+
 
 		</plugins>
 

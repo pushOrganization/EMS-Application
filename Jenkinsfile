@@ -1,3 +1,4 @@
+
 node('JavaAgent') {
         slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} started"
   
@@ -34,6 +35,7 @@ node('JavaAgent') {
         }
  timeout(time:5, unit:'DAYS') {
     input message:'Approve deployment?', submitter: 'admin'
+
 }
   //call(currentBuild.currentResult)
   slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was successful"
